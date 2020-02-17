@@ -2,7 +2,7 @@
   "name": "cartesian",
   "version": "1.0.0",
   "description": "Cartesian product react component",
-  "main": "index.js",
+  "main": "src/Cartesian.js",
   "scripts": {
     "test": "jest"
   },
