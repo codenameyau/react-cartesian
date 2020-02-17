@@ -24,25 +24,25 @@ export const CartesianGridItem = styled.div`
     ${({ showProps }) =>
       showProps &&
       css`
-			&::before {
-				content: '${({ content }) => `hello\n${content}`}';
-				white-space: pre;
-				transition : all .5s ease;
-				text-indent: 1em;
-				background: rgba(0, 0, 0, 0.5);
-				border-radius: 4px;
-				padding: 0.5em;
-				display: block;
-				unicode-bidi: embed;
-				font-family: monospace;
-				font-size: 14px;
-				color: #fff;
-				position: absolute;
-				bottom: -2em;
-				left: 1em;
-				z-index: 1;
-			}
-		`}
+      &::before {
+        content: '${({ content }) => `hello\n${content}`}';
+        white-space: pre;
+        transition : all .5s ease;
+        text-indent: 1em;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        padding: 0.5em;
+        display: block;
+        unicode-bidi: embed;
+        font-family: monospace;
+        font-size: 14px;
+        color: #fff;
+        position: absolute;
+        bottom: -2em;
+        left: 1em;
+        z-index: 1;
+      }
+    `}
     &::after {
       content: "Click to copy";
       font-size: 12px;
