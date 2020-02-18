@@ -1,4 +1,8 @@
 example
+demo
+src
 *.test.js
 .eslintrc
 README.md
+.babelrc
+webpack.config.js
