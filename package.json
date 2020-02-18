@@ -3,12 +3,13 @@
   "version": "1.0.1",
   "description": "Cartesian product react component",
   "main": "src/Cartesian.js",
-  "scripts": {
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codenameyau/cartesian.git"
+    "url": "git+https://github.com/codenameyau/react-cartesian.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "jest"
   },
   "keywords": [
     "cartesian",
@@ -20,10 +21,10 @@
   "author": "Jorge Yau <codenameyau@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codenameyau/cartesian/issues"
+    "url": "https://github.com/codenameyau/react-cartesian/issues"
   },
-  "homepage": "https://github.com/codenameyau/cartesian#readme",
-  "dependencies": {
+  "homepage": "https://github.com/codenameyau/react-cartesian#readme",
+  "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "styled-components": "^5.0.1"
