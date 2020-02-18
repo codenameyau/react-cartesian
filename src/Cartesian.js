@@ -114,12 +114,14 @@ export const getJSX = (Component, { children, ...props }) => {
 export const Cartesian = ({ component, props, ...restProps }) => {
   const Component = component;
   const cartesianProps = getCartesianProps(props);
-  const { cols, showProps, background } = restProps;
+  const { cols, showProps, background, shouldCopy } = restProps;
 
-  const copyComponent = (e, idx) => {
-    const jsx = getJSX(<Component />, cartesianProps[idx]);
-    navigator.clipboard.writeText(jsx);
-  };
+  const copyComponent = shouldCopy
+    ? (e, idx) => {
+        const jsx = getJSX(<Component />, cartesianProps[idx]);
+        navigator.clipboard.writeText(jsx);
+      }
+    : () => {};
 
   return (
     <CartesianGrid cols={cols} background={background}>
@@ -144,13 +146,15 @@ Cartesian.propTypes = {
   props: PropTypes.object,
   cols: PropTypes.number,
   showProps: PropTypes.bool,
-  background: PropTypes.string
+  background: PropTypes.string,
+  shouldCopy: PropTypes.bool
 };
 
 Cartesian.defaultProps = {
   cols: 4,
   showProps: false,
-  background: "none"
+  background: "none",
+  shouldCopy: true
 };
 
 export default Cartesian;

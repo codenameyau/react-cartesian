@@ -6,8 +6,11 @@ combinations for a component and is useful in conjunction with storybook.
 
 ### Getting started
 ```bash
-# Install component
 npm install --save react-cartesian
+```
+
+```bash
+yarn add react-cartesian
 ```
 
 ### Usage
@@ -18,11 +21,12 @@ import Cartesian from 'react-cartesian';
 const ExampleCartesian = () => {
   return (
     <Cartesian
-      cols={4}
+      cols={3}
       component={Component}
       showProps={false}
       props={{
-        children: ['Short Text', 'This is very long Text']
+        color: ['red', 'green', 'blue'],
+        children: ['Text 1', 'Text 2', 'Text 3']
       }}
     />
   )
