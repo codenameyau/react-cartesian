@@ -1,8 +1,9 @@
 {
   "name": "react-cartesian",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Cartesian product react component",
-  "main": "./lib/Cartesian.js",
+  "module": "src/Cartesian.js",
+  "main": "lib/Cartesian.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codenameyau/react-cartesian.git"
@@ -25,9 +26,12 @@
   },
   "homepage": "https://github.com/codenameyau/react-cartesian#readme",
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
     "styled-components": "^5.0.1"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
