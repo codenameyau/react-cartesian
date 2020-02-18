@@ -1,6 +1,5 @@
 example
 demo
-src
 *.test.js
 .eslintrc
 README.md
