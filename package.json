@@ -1,6 +1,6 @@
 {
   "name": "react-cartesian",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Cartesian product react component",
   "author": "Jorge Yau <codenameyau@gmail.com>",
   "main": "lib/Cartesian.js",
