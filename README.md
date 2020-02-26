@@ -34,8 +34,9 @@ const ExampleCartesian = () => {
 ```
 
 ### Developers
-How to publish. These steps are run with `npm run deploy`.
+These steps are automated with `npm run deploy`.
 
+How to publish manually.
 ```bash
 # Run unit tests.
 npm run test
