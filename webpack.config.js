@@ -1,23 +1,29 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-    mode: 'production',
-    entry: './src/Cartesian.js',
-    output: {
-        path: path.resolve('lib'),
-        filename: 'Cartesian.js',
-        libraryTarget: 'commonjs2'
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude: /(node_modules)/,
-                use: 'babel-loader'
+  mode: "production",
+  entry: "./src/Cartesian.js",
+  output: {
+    path: path.resolve(__dirname, "lib"),
+    filename: "Cartesian.js",
+    libraryTarget: "commonjs2"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /(node_modules)/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env']
             }
-        ]
-    },
-    externals: {
-      react: "commonjs react"
-    }
-}
+          }
+      }
+    ]
+  },
+  externals: {
+    react: "commonjs react"
+  }
+};

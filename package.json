@@ -2,7 +2,7 @@
   "name": "react-cartesian",
   "version": "1.0.4",
   "description": "Cartesian product react component",
-  "type": "module",
+  "author": "Jorge Yau <codenameyau@gmail.com>",
   "module": "src/Cartesian.js",
   "main": "lib/Cartesian.js",
   "repository": {
@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "webpack",
+    "start": "webpack --watch",
     "test": "jest"
   },
   "keywords": [
@@ -20,7 +21,6 @@
     "react",
     "storybook"
   ],
-  "author": "Jorge Yau <codenameyau@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/codenameyau/react-cartesian/issues"
@@ -38,6 +38,7 @@
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
     "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.7",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
