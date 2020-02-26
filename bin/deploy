@@ -2,7 +2,7 @@
 set -euf -o pipefail
 
 # Run unit tests.
-npm run test
+npm run test:ci
 
 # Build module.
 npm run build
