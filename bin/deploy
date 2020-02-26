@@ -1,0 +1,18 @@
+#!/bin/bash
+set -euf -o pipefail
+
+# Run unit tests.
+npm run test
+
+# Build module.
+npm run build
+
+# Bump patch version.
+npm version patch
+
+# Push code to github.
+git add -A
+git commit -m "Bumping version"
+
+# Publish package to npm with OTP two factor code.
+npm run publish

@@ -32,3 +32,24 @@ const ExampleCartesian = () => {
   )
 };
 ```
+
+### Developers
+How to publish. These steps are run with `npm run deploy`.
+
+```bash
+# Run unit tests.
+npm run test
+
+# Build module.
+npm run build
+
+# Bump patch version.
+npm version patch
+
+# Push code to github.
+git add -A
+git commit -m "deploying code"
+
+# Publish package to npm with OTP two factor code.
+npm run publish
+```

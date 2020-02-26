@@ -13,7 +13,7 @@
     "start": "webpack --watch",
     "test": "jest --watch",
     "test:ci": "jest",
-    "publish": "webpack && npm version patch && npm publish"
+    "deploy": "./bin/deploy"
   },
   "keywords": [
     "cartesian",
