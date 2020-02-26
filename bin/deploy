@@ -11,8 +11,7 @@ npm run build
 npm version patch
 
 # Push code to github.
-git add -A
-git commit -m "Bumping version"
+git push
 
 # Publish package to npm with OTP two factor code.
 npm run publish
