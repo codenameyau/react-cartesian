@@ -7,3 +7,4 @@ README.md
 webpack.config.js
 prettier.config.js
 setupTests.js
+bin

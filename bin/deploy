@@ -14,4 +14,4 @@ npm version patch
 git push
 
 # Publish package to npm with OTP two factor code.
-npm run publish
+npm publish
