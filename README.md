@@ -33,10 +33,15 @@ const ExampleCartesian = () => {
 };
 ```
 
-### Developers
-These steps are automated with `npm run deploy`.
+## Publishing to NPM
+Here's how to publish this package to NPM.
 
-How to publish manually.
+Run automated script on a **clean branch** that will ask for two factor code.
+```bash
+npm run deploy
+```
+
+You can also publish manually by running these steps.
 ```bash
 # Run unit tests.
 npm run test
@@ -47,10 +52,6 @@ npm run build
 # Bump patch version.
 npm version patch
 
-# Push code to github.
-git add -A
-git commit -m "deploying code"
-
-# Publish package to npm with OTP two factor code.
-npm run publish
+# Publish package to npm with two factor code.
+npm publish
 ```
