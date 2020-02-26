@@ -1,4 +1,4 @@
-import { getCartesianProduct, getCartesianProps, getJSX } from "./Cartesian";
+import { getCartesianProduct, getCartesianProps } from "./Cartesian";
 
 describe("getCartesianProduct", () => {
   it("should return empty array for empty array input", () => {

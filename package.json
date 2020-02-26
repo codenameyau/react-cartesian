@@ -2,6 +2,7 @@
   "name": "react-cartesian",
   "version": "1.0.4",
   "description": "Cartesian product react component",
+  "type": "module",
   "module": "src/Cartesian.js",
   "main": "lib/Cartesian.js",
   "repository": {
@@ -34,11 +35,12 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "babel-core": "^6.21.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-plugin-styled-components": "^1.10.7",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "path": "^0.12.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
