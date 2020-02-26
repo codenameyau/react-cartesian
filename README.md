@@ -2,7 +2,7 @@
 
 React Cartesian Product component. This will render all possible prop
 combinations for a component and is useful in conjunction with storybook.
-
+https://www.npmjs.com/package/react-cartesian
 
 ### Getting started
 ```bash
