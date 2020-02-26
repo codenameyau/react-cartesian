@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 
 export const CartesianGrid = styled.div`
   margin: auto;
@@ -45,7 +45,7 @@ export const CartesianGridItem = styled.div`
       }
     `}
     &::after {
-      content: "Click to copy";
+      content: 'Click to copy';
       font-size: 12px;
       color: #aaa;
       position: absolute;
@@ -84,7 +84,7 @@ export const getCartesianProps = (props = {}) => {
     return result.reduce((acc, value, idx) => {
       return {
         ...acc,
-        [keys[idx]]: value
+        [keys[idx]]: value,
       };
     }, {});
   });
@@ -95,17 +95,15 @@ export const getJSX = (Component, { children, ...props }) => {
 
   const propsAttrs = Object.keys(props).reduce((acc, prop) => {
     const propValue =
-      typeof props[prop] === "object"
-        ? JSON.stringify(props[prop])
-        : props[prop];
+      typeof props[prop] === 'object' ? JSON.stringify(props[prop]) : props[prop];
 
     const propAttr =
-      typeof props[prop] === "string" ? `"${propValue}"` : `{${propValue}}`;
+      typeof props[prop] === 'string' ? `"${propValue}"` : `{${propValue}}`;
 
     return [...acc, `${prop}=` + propAttr];
   }, []);
 
-  const propsString = propsAttrs.join(" ");
+  const propsString = propsAttrs.join(' ');
 
   return children
     ? `<${name} ${propsString}>${children}</${name}>`
@@ -148,14 +146,14 @@ Cartesian.propTypes = {
   cols: PropTypes.number,
   showProps: PropTypes.bool,
   background: PropTypes.string,
-  shouldCopy: PropTypes.bool
+  shouldCopy: PropTypes.bool,
 };
 
 Cartesian.defaultProps = {
   cols: 4,
   showProps: false,
-  background: "none",
-  shouldCopy: true
+  background: 'none',
+  shouldCopy: true,
 };
 
 export default Cartesian;
