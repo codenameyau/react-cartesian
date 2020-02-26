@@ -5,3 +5,5 @@ demo
 README.md
 .babelrc
 webpack.config.js
+prettier.config.js
+setupTests.js
