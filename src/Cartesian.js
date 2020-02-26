@@ -19,6 +19,7 @@ export const CartesianGridItem = styled.div`
   transition: background 0.3s;
   position: relative;
   cursor: pointer;
+
   &:hover {
     background: #eee;
     ${({ showProps }) =>
