@@ -45,12 +45,12 @@ export const CartesianGridItem = styled.div`
       }
     `}
     &::after {
-      content: 'Click to copy';
+      content: 'Click to copy JSX';
       font-size: 12px;
       color: #aaa;
       position: absolute;
       top: 2px;
-      right: 2px;
+      right: 0.5em;
     }
   }
   &:active {
