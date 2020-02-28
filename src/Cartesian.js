@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import prettier from 'prettier';
 import styled, { css } from 'styled-components';
 
 export const CartesianGrid = styled.div`
@@ -48,15 +49,15 @@ export const CartesianGridItem = styled.div`
     ${({ hideCopy }) =>
       !hideCopy &&
       css`
-      &::after {
-        content: 'Click to copy JSX';
-        font-size: 12px;
-        color: #aaa;
-        position: absolute;
-        top: 2px;
-        right: 0.5em;
-      }
-    `}
+        &::after {
+          content: 'Click to copy JSX';
+          font-size: 12px;
+          color: #aaa;
+          position: absolute;
+          top: 2px;
+          right: 0.5em;
+        }
+      `}
   }
   &:active {
     background: #bbb;
@@ -95,6 +96,11 @@ export const getCartesianProps = (props = {}) => {
   });
 };
 
+export const defaultPrettierOptions = {
+  semi: false,
+  parser: 'babel',
+};
+
 export const getJSX = (Component, { children, ...props }) => {
   const name = Component.type.displayName || Component.type.name;
 
@@ -110,9 +116,16 @@ export const getJSX = (Component, { children, ...props }) => {
 
   const propsString = propsAttrs.join(' ');
 
-  return children
+  const jsx = children
     ? `<${name} ${propsString}>${children}</${name}>`
     : `<${name} ${propsString} />`;
+
+  const prettierJSX = prettier.format(jsx, {
+    ...defaultPrettierOptions,
+    ...props.prettierOptions
+  });
+
+  return prettierJSX;
 };
 
 export const Cartesian = ({ component, props, ...restProps }) => {
@@ -152,6 +165,7 @@ Cartesian.propTypes = {
   showProps: PropTypes.bool,
   background: PropTypes.string,
   hideCopy: PropTypes.bool,
+  prettierOptions: PropTypes.object,
 };
 
 Cartesian.defaultProps = {
@@ -159,6 +173,7 @@ Cartesian.defaultProps = {
   showProps: false,
   background: 'none',
   hideCopy: false,
+  prettierOptions: {},
 };
 
 export default Cartesian;
