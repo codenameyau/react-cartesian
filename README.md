@@ -4,7 +4,11 @@ React Cartesian Product component. This will render all possible prop
 combinations for a component and is useful in conjunction with storybook.
 https://www.npmjs.com/package/react-cartesian
 
-### Getting started
+## Features
+
+Can copy JSX of component with a single click.
+
+## Getting started
 ```bash
 npm install --save react-cartesian
 ```
@@ -36,12 +40,16 @@ const ExampleCartesian = () => {
 ## Publishing to NPM
 Here's how to publish this package to NPM.
 
-Run automated script on a **clean branch** that will ask for two factor code.
+### Automated
+Run this script on a **clean branch** and enter two factor code.
+
 ```bash
 npm run deploy
 ```
 
+### Manually
 You can also publish manually by running these steps.
+
 ```bash
 # Run unit tests.
 npm run test

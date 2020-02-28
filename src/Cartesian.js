@@ -44,14 +44,19 @@ export const CartesianGridItem = styled.div`
         z-index: 1;
       }
     `}
-    &::after {
-      content: 'Click to copy JSX';
-      font-size: 12px;
-      color: #aaa;
-      position: absolute;
-      top: 2px;
-      right: 0.5em;
-    }
+
+    ${({ hideCopy }) =>
+      !hideCopy &&
+      css`
+      &::after {
+        content: 'Click to copy JSX';
+        font-size: 12px;
+        color: #aaa;
+        position: absolute;
+        top: 2px;
+        right: 0.5em;
+      }
+    `}
   }
   &:active {
     background: #bbb;
@@ -113,14 +118,14 @@ export const getJSX = (Component, { children, ...props }) => {
 export const Cartesian = ({ component, props, ...restProps }) => {
   const Component = component;
   const cartesianProps = getCartesianProps(props);
-  const { cols, showProps, background, shouldCopy } = restProps;
+  const { cols, showProps, background, hideCopy } = restProps;
 
-  const copyComponent = shouldCopy
-    ? (e, idx) => {
+  const copyComponent = hideCopy
+    ? () => {}
+    : (e, idx) => {
         const jsx = getJSX(<Component />, cartesianProps[idx]);
         navigator.clipboard.writeText(jsx);
-      }
-    : () => {};
+      };
 
   return (
     <CartesianGrid cols={cols} background={background}>
@@ -146,14 +151,14 @@ Cartesian.propTypes = {
   cols: PropTypes.number,
   showProps: PropTypes.bool,
   background: PropTypes.string,
-  shouldCopy: PropTypes.bool,
+  hideCopy: PropTypes.bool,
 };
 
 Cartesian.defaultProps = {
   cols: 4,
   showProps: false,
   background: 'none',
-  shouldCopy: true,
+  hideCopy: false,
 };
 
 export default Cartesian;
