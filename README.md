@@ -6,6 +6,8 @@ https://www.npmjs.com/package/react-cartesian
 
 ## Features
 
+![screenshot](https://user-images.githubusercontent.com/3826772/75525605-2402da80-59de-11ea-99cb-7845e15b1e68.png)
+
 Can copy JSX of component with a single click.
 
 ## Getting started
