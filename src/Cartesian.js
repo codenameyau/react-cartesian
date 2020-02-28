@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
-import prettier from 'prettier';
+import prettyFormat from "pretty-format";
+import renderer from 'react-test-renderer';
 import styled, { css } from 'styled-components';
+
+const { ReactTestComponent } = prettyFormat.plugins;
 
 export const CartesianGrid = styled.div`
   margin: auto;
@@ -96,36 +99,17 @@ export const getCartesianProps = (props = {}) => {
   });
 };
 
-export const defaultPrettierOptions = {
-  semi: false,
-  parser: 'babel',
-};
+export const getJSX = (Component) => {
+  if (!isValidElement(Component)) {
+    return '';
+  }
 
-export const getJSX = (Component, { children, ...props }) => {
-  const name = Component.type.displayName || Component.type.name;
-
-  const propsAttrs = Object.keys(props).reduce((acc, prop) => {
-    const propValue =
-      typeof props[prop] === 'object' ? JSON.stringify(props[prop]) : props[prop];
-
-    const propAttr =
-      typeof props[prop] === 'string' ? `"${propValue}"` : `{${propValue}}`;
-
-    return [...acc, `${prop}=` + propAttr];
-  }, []);
-
-  const propsString = propsAttrs.join(' ');
-
-  const jsx = children
-    ? `<${name} ${propsString}>${children}</${name}>`
-    : `<${name} ${propsString} />`;
-
-  const prettierJSX = prettier.format(jsx, {
-    ...defaultPrettierOptions,
-    ...props.prettierOptions
+  const jsx = prettyFormat(renderer.create(Component), {
+    plugins: [ReactTestComponent],
+    printFunctionName: true,
   });
 
-  return prettierJSX;
+  return jsx;
 };
 
 export const Cartesian = ({ component, props, ...restProps }) => {
@@ -136,7 +120,7 @@ export const Cartesian = ({ component, props, ...restProps }) => {
   const copyComponent = hideCopy
     ? () => {}
     : (e, idx) => {
-        const jsx = getJSX(<Component />, cartesianProps[idx]);
+        const jsx = getJSX(<Component {...cartesianProps[idx]} />);
         navigator.clipboard.writeText(jsx);
       };
 
