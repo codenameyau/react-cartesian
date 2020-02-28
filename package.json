@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/codenameyau/react-cartesian#readme",
   "dependencies": {
-    "prettier": "^1.19.1",
+    "react-element-to-jsx-string": "^14.3.1",
     "styled-components": "^5.0.1"
   },
   "peerDependencies": {

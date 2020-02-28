@@ -1,20 +1,34 @@
+import React from 'react';
+
 import {
   getCartesianProduct,
   getCartesianProps,
   CartesianGrid,
   CartesianGridItem,
+  getJSX,
+  Cartesian,
 } from './Cartesian';
+import { shallow } from 'enzyme';
+
+const HelloTag = props => {
+  return (
+    <div>
+      Hello {props.name}
+      {props.children}
+    </div>
+  );
+};
 
 describe('CartesianGrid', () => {
   it('should render component', () => {
-    shallow(<CartesianGrid/>)
-  })
+    shallow(<CartesianGrid />);
+  });
 });
 
 describe('CartesianGridItem', () => {
   it('should render component', () => {
-    shallow(<CartesianGridItem/>)
-  })
+    shallow(<CartesianGridItem />);
+  });
 });
 
 describe('getCartesianProduct', () => {
@@ -129,5 +143,41 @@ describe('getCartesianProps', () => {
       { currentStep: step, completed: true },
     ];
     expect(getCartesianProps(input)).toEqual(output);
+  });
+});
+
+describe('getJSX', () => {
+  it('should handle empty component', () => {
+    expect(getJSX(null)).toEqual('');
+  });
+
+  it('should handle JSX with no props', () => {
+    const component = <HelloTag />;
+    expect(getJSX(component)).toEqual(`<HelloTag />`);
+  });
+
+  it('should handle JSX with props', () => {
+    const component = <HelloTag name="John" />;
+    expect(getJSX(component)).toEqual(`<HelloTag name="John" />`);
+  });
+});
+
+describe('Cartesian', () => {
+  it('should render cartesian product', () => {
+    const wrapper = shallow(
+      <Cartesian
+        cols={3}
+        component={HelloTag}
+        showProps={false}
+        props={{
+          color: ['red', 'green', 'blue'],
+          children: ['Text 1', 'Text 2', 'Text 3'],
+        }}
+      />
+    );
+
+    expect(wrapper.find(CartesianGrid).length).toEqual(1);
+    expect(wrapper.find(CartesianGridItem).length).toEqual(9);
+    expect(wrapper.find(HelloTag).length).toEqual(9);
   });
 });
