@@ -6,7 +6,18 @@ import {
   CartesianGrid,
   CartesianGridItem,
   getJSX,
+  Cartesian,
 } from './Cartesian';
+import { shallow } from 'enzyme';
+
+const HelloTag = props => {
+  return (
+    <div>
+      Hello {props.name}
+      {props.children}
+    </div>
+  );
+};
 
 describe('CartesianGrid', () => {
   it('should render component', () => {
@@ -136,19 +147,6 @@ describe('getCartesianProps', () => {
 });
 
 describe('getJSX', () => {
-  const HelloTag = props => {
-    return (
-      <div>
-        Hello {props.name}
-        {props.children}
-      </div>
-    );
-  };
-
-  const Greetings = props => {
-    return <div>{props.greetings}</div>;
-  };
-
   it('should handle empty component', () => {
     expect(getJSX(null)).toEqual('');
   });
@@ -160,40 +158,26 @@ describe('getJSX', () => {
 
   it('should handle JSX with props', () => {
     const component = <HelloTag name="John" />;
-    expect(getJSX(component)).toEqual(`<HelloTag name="John"/>`);
+    expect(getJSX(component)).toEqual(`<HelloTag name="John" />`);
   });
+});
 
-  it('should handle JSX with children and no props', () => {
-    const component = <HelloTag>Nice to meet you.</HelloTag>;
-    expect(getJSX(component)).toEqual(`<HelloTag >Nice to meet you.</HelloTag>`);
-  });
-
-  it('should handle JSX with children and props', () => {
-    const component = <HelloTag name="John">Nice to meet you.</HelloTag>;
-    expect(getJSX(component)).toEqual(
-      `<HelloTag name="John">Nice to meet you.</HelloTag>`
-    );
-  });
-
-  it('should handle JSX with JSX children', () => {
-    const component = (
-      <HelloTag>
-        <Greetings greetings="Nice to meet you." />
-      </HelloTag>
+describe('Cartesian', () => {
+  it('should render cartesian product', () => {
+    const wrapper = shallow(
+      <Cartesian
+        cols={3}
+        component={HelloTag}
+        showProps={false}
+        props={{
+          color: ['red', 'green', 'blue'],
+          children: ['Text 1', 'Text 2', 'Text 3'],
+        }}
+      />
     );
 
-    expect(getJSX(component)).toEqual(`<HelloTag >Nice to meet you.</HelloTag>`);
-  });
-
-  it('should handle JSX with JSX children and props', () => {
-    const component = (
-      <HelloTag name="John">
-        <Greetings greetings="Nice to meet you." />
-      </HelloTag>
-    );
-
-    expect(getJSX(component)).toEqual(
-      `<HelloTag name="John">Nice to meet you.</HelloTag>`
-    );
+    expect(wrapper.find(CartesianGrid).length).toEqual(1);
+    expect(wrapper.find(CartesianGridItem).length).toEqual(9);
+    expect(wrapper.find(HelloTag).length).toEqual(9);
   });
 });

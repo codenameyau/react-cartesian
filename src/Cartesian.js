@@ -1,10 +1,7 @@
 import React, { isValidElement } from 'react';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 import PropTypes from 'prop-types';
-import prettyFormat from "pretty-format";
-import renderer from 'react-test-renderer';
 import styled, { css } from 'styled-components';
-
-const { ReactTestComponent } = prettyFormat.plugins;
 
 export const CartesianGrid = styled.div`
   margin: auto;
@@ -104,12 +101,7 @@ export const getJSX = (Component) => {
     return '';
   }
 
-  const jsx = prettyFormat(renderer.create(Component), {
-    plugins: [ReactTestComponent],
-    printFunctionName: true,
-  });
-
-  return jsx;
+  return reactElementToJSXString(Component)
 };
 
 export const Cartesian = ({ component, props, ...restProps }) => {
