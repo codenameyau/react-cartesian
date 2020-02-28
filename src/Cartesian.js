@@ -141,7 +141,6 @@ Cartesian.propTypes = {
   showProps: PropTypes.bool,
   background: PropTypes.string,
   hideCopy: PropTypes.bool,
-  prettierOptions: PropTypes.object,
 };
 
 Cartesian.defaultProps = {
@@ -149,7 +148,6 @@ Cartesian.defaultProps = {
   showProps: false,
   background: 'none',
   hideCopy: false,
-  prettierOptions: {},
 };
 
 export default Cartesian;
